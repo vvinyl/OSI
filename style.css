@@ -4,18 +4,20 @@ body{
     color: white;
     font-size: 16px;
     margin-top: 30px;
-    line-height: 24px;
+    margin: 0 auto;
+    padding: 0 auto;
 }
 .banner{
-    width: 100%;
+    width: 100vw;
     display: flex;
     background-color: #FFCC17;
     color: black;
     border-bottom: 1px solid #272727;
     float: left;
+    border-radius: 10px;
 }
 .bn{
-    width: 25%;
+    width: 25vw;
     text-align: center;
 }
 
@@ -24,13 +26,13 @@ body{
     border-bottom: 1px solid black;
 }
 .mainContent{
-    padding-left: 10px;
+    width: 85vw;
 }
 .leftMenu{
-    width: 15%;
+    width: 15vw;
     background-color: #FFCC17;
     color: black;
-    padding-left: 10px;
+    border-radius: 10px;
     border: 1px solid #272727;
 }
 .content{
@@ -40,9 +42,6 @@ body{
 .leftMenu a{
     text-decoration: none;
     color: black;
-}
-.lmPadding{
-    padding-top: 10px;
 }
 .kryptoLogo{
     width: 100%;
@@ -68,11 +67,18 @@ body{
     margin: 0 auto;
     padding-bottom: 10px;
 }
+.uklad{
+    width: 100vw;
+}
+.logoKrypto{
+    width: 100vw;
+}
 .footer{
     clear: both;
     width: 100%;
     text-align: center;
-    color: #FFFFFF;
+    color: black;
+    padding-top: 20px;
 }
 a:hover{
     text-decoration: underline;
@@ -80,4 +86,34 @@ a:hover{
 a{
     text-decoration: none;
     color: black;
+}
+.grafiki{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.smallImg{
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+.displayImg{
+    min-height: 350px;
+    min-width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grafiki .smallImg img {
+  transition: transform 0.3s ease;
+}
+.grafiki .smallImg:hover img {
+  transform: scale(1.1);
+}
+.displayImg {
+  min-width: 85vw;
+  min-height: 350px;
+  max-height: 300px;
 }
