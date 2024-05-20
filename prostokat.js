@@ -22,7 +22,7 @@ function roundRect(ctx, x, y, width, height, radius) {
 }
 
 // Użyj funkcji do narysowania prostokąta
-roundRect(ctx, 50, 50, 100, 100, 20);
+roundRect(ctx, 50, 50, 100, 200, 20);
 
 // Wypełnij gradientem
 ctx.fillStyle = gradient;
