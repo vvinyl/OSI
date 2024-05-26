@@ -23,7 +23,6 @@
     <meta property="og:type" content="website">
     <meta property="og:iamge" content="https://github.com/vvinyl/OSI/blob/main/pierwotneGrafiki/ethernum.png">
     <meta property="og:url" content="https://vvinyl.github.io/OSI/index.html">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 
     <title>Kryptowaluty</title>
 </head>
@@ -152,56 +151,53 @@
             <a href="laboratoria.html"></a>
         </div>
         <div class="mainContent">
-            <h1>Laboratorium 8 - Wykres 1</h1>
+            <h1>Laboratorium 5 - Zadanie 5</h1>
             <canvas width="400" height="400" id="zadanie">
 
             </canvas>
-            <script>
-                function generujDaneWykresu() {
-            const dane = [];
-            for (let x = -5; x <= 5; x += 0.1) {
-              dane.push({x: x, y: obliczFunkcje(x)});
-            }
-            return dane;
-          }
-          
-          function obliczFunkcje(x) {
-            return Math.pow(x, 2) - 10 * Math.cos(2 * Math.PI * x) + 10;
-          }
-          
-          
-          document.addEventListener('DOMContentLoaded', function() {
-            const ctx = document.getElementById('zadanie').getContext('2d');
-            const chart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                  datasets: [{
-                    label: 'f(x)',
-                    data: generujDaneWykresu(),
-                    fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.1
-                  }]
-                },
-                options: {
-                  responsive: false, 
-                  maintainAspectRatio: true, 
-                  scales: {
-                    x: {
-                      type: 'linear',
-                      position: 'bottom'
-                    },
-                    y: {
-                      beginAtZero: true 
-                    }
-                  }
-                }
-              });
-              
-          });
-            </script>
+            
         </div>
-
+        <script>
+        window.onload = function() {
+            var canvas = document.getElementById("zadanie");
+            var context = canvas.getContext("2d");
+        
+            var x = canvas.width / 2;
+            var y = canvas.height / 2;
+            var dx = 2;
+            var dy = 2;
+            var ballRadius = 10;
+        
+            function drawBall() {
+                context.beginPath();
+                context.arc(x, y, ballRadius, 0, Math.PI * 2);
+                context.fillStyle = "#0095DD";
+                context.fill();
+                context.closePath();
+            }
+        
+            function updatePosition() {
+                x += dx;
+                y += dy;
+        
+                if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+                    dx = -dx;
+                }
+                if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
+                    dy = -dy;
+                }
+            }
+        
+            function drawAnimation() {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                drawBall();
+                updatePosition();
+                requestAnimationFrame(drawAnimation);
+            }
+        
+            drawAnimation();
+        }
+        </script>
     </div>
     <div class="footer">
         <p>Designed by: vviny_l</p>

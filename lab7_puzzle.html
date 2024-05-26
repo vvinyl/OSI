@@ -25,7 +25,7 @@
     <meta property="og:type" content="website">
     <meta property="og:iamge" content="https://github.com/vvinyl/OSI/blob/main/pierwotneGrafiki/ethernum.png">
     <meta property="og:url" content="https://vvinyl.github.io/OSI/index.html">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
     <title>Kryptowaluty</title>
 </head>
 
@@ -97,6 +97,8 @@
           }],
         }
         
+        
+
         </script>
     <div class="uklad">
         <div class="logoKrypto">
@@ -181,92 +183,110 @@
                 <a href="laboratoria.html"></a>
             </div>
             <div class="mainContent">
-                <h1>Laboratorium 6 - Zegar</h1>
-                <canvas id="clock" width="400" height="400"></canvas>
-                <script>
-             window.onload = function () {
-            var canvas = document.getElementById('clock');
-            var ctx = canvas.getContext('2d');
-            var radius = canvas.height / 2;
-            ctx.translate(radius, radius);
-            radius = radius * 0.90;
-            setInterval(drawClock, 1000);
-
-            function drawClock() {
-                drawFace(ctx, radius);
-                drawNumbers(ctx, radius);
-                drawTime(ctx, radius);
-            }
-
-            function drawFace(ctx, radius) {
-                var grad;
-                ctx.beginPath();
-                ctx.arc(0, 0, radius, 0, 2 * Math.PI);
-                ctx.fillStyle = 'white';
-                ctx.fill();
-                grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
-                grad.addColorStop(0, '#333');
-                grad.addColorStop(0.5, 'white');
-                grad.addColorStop(1, '#333');
-                ctx.strokeStyle = grad;
-                ctx.lineWidth = radius * 0.1;
-                ctx.stroke();
-                ctx.beginPath();
-                ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
-                ctx.fillStyle = '#333';
-                ctx.fill();
-            }
-
-            function drawNumbers(ctx, radius) {
-                var ang;
-                var num;
-                ctx.font = radius * 0.15 + "px arial";
-                ctx.textBaseline = "middle";
-                ctx.textAlign = "center";
-                for (num = 1; num < 13; num++) {
-                    ang = num * Math.PI / 6;
-                    ctx.rotate(ang);
-                    ctx.translate(0, -radius * 0.85);
-                    ctx.rotate(-ang);
-                    ctx.fillText(num.toString(), 0, 0);
-                    ctx.rotate(ang);
-                    ctx.translate(0, radius * 0.85);
-                    ctx.rotate(-ang);
-                }
-            }
-
-            function drawTime(ctx, radius) {
-                var now = new Date();
-                var hour = now.getHours();
-                var minute = now.getMinutes();
-                var second = now.getSeconds();
-                //hour
-                hour = hour % 12;
-                hour = (hour * Math.PI / 6) +
-                    (minute * Math.PI / (6 * 60)) +
-                    (second * Math.PI / (360 * 60));
-                drawHand(ctx, hour, radius * 0.5, radius * 0.07);
-                //minute
-                minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60));
-                drawHand(ctx, minute, radius * 0.8, radius * 0.07);
-                // second
-                second = (second * Math.PI / 30);
-                drawHand(ctx, second, radius * 0.9, radius * 0.02);
-            }
-
-            function drawHand(ctx, pos, length, width) {
-                ctx.beginPath();
-                ctx.lineWidth = width;
-                ctx.lineCap = "round";
-                ctx.moveTo(0, 0);
-                ctx.rotate(pos);
-                ctx.lineTo(0, -length);
-                ctx.stroke();
-                ctx.rotate(-pos);
-            }
-        }
-                </script>
+                <h1>Laboratorium 7 - Puzzle</h1>
+                <img src="./src/puzzle.jpg" alt="Podgląd obrazka">
+                <canvas id="canvas" width="760" height="760"></canvas>
+                <div>
+                    <button id="check-button">Check</button>
+                    <button id="resolve-button">Resolve</button>
+                    <button id="shuffle-button">Shuffle</button>
+                </div>
                 
+                <script>
+                    var canvas = new fabric.Canvas('canvas');
+
+                    async function loadPuzzlePieces() {
+                        var pieceWidth = 190;
+                        var pieceHeight = 190;
+                        var numPieces = 16;
+
+                        for (let i = 0; i < numPieces; i++) {
+                            await new Promise((resolve, reject) => {
+                                fabric.Image.fromURL('./src/puzzle/' + (i + 1) + '.jpg', function (img) {
+
+                                    var leftPos = Math.random() * (canvas.width - pieceWidth);
+                                    var topPos = Math.random() * (canvas.height - pieceHeight);
+
+                                    img.set({
+                                        left: leftPos,
+                                        top: topPos,
+                                        scaleX: 1,
+                                        scaleY: 1,
+                                        selectable: true
+                                    });
+
+                                    canvas.add(img);
+                                    resolve();
+                                });
+                            });
+                        }
+                    }
+
+
+
+                    document.getElementById('shuffle-button').onclick = function () {
+                        canvas.getObjects().forEach(function (obj) {
+                            var leftPos = Math.random() * (canvas.width - obj.width);
+                            var topPos = Math.random() * (canvas.height - obj.height);
+
+                            obj.set({
+                                left: leftPos,
+                                top: topPos,
+                                lockScalingX: true,
+                                lockScalingY: true,
+                            }).setCoords();
+                            canvas.renderAll();
+                        });
+                    };
+                    var correctPositions = [
+                        { left: 0, top: 0 }, { left: 190, top: 0 }, { left: 380, top: 0 }, { left: 570, top: 0 },
+                        { left: 0, top: 190 }, { left: 190, top: 190 }, { left: 380, top: 190 }, { left: 570, top: 190 },
+                        { left: 0, top: 380 }, { left: 190, top: 380 }, { left: 380, top: 380 }, { left: 570, top: 380 },
+                        { left: 0, top: 570 }, { left: 190, top: 570 }, { left: 380, top: 570 }, { left: 570, top: 570 }
+                    ];
+
+                    function checkIfCorrect() {
+                        var pieces = canvas.getObjects();
+                        for (var i = 0; i < pieces.length; i++) {
+                            var piece = pieces[i];
+                            var correctPosition = correctPositions[i];
+
+
+                            if (Math.abs(piece.left - correctPosition.left) > 10 || Math.abs(piece.top - correctPosition.top) > 10) {
+                                return false;
+                            }
+                        }
+                        resolvePuzzle();
+                        return true;
+                    }
+
+                    function resolvePuzzle() {
+                        var pieces = canvas.getObjects();
+                        for (var i = 0; i < pieces.length; i++) {
+                            var correctPosition = correctPositions[i];
+                            pieces[i].set({
+                                left: correctPosition.left,
+                                top: correctPosition.top
+                            }).setCoords();
+                        }
+                        canvas.renderAll();
+                    }
+
+                    window.onload = function () {
+
+                        var checkButton = document.getElementById('check-button');
+                        var resolveButton = document.getElementById('resolve-button');
+                        checkButton.onclick = function () {
+                            if (checkIfCorrect()) {
+                                alert('Gratulacje! Układanka jest poprawnie ułożona.');
+                            } else {
+                                alert('Układanka nie jest poprawnie ułożona. Spróbuj ponownie.');
+                            }
+                        };
+                        resolveButton.onclick = resolvePuzzle;
+                        loadPuzzlePieces();
+                    }
+                </script>
             </div>
 
         </div>
@@ -275,6 +295,7 @@
             <p>Czwa 2024 &copy;</p>
         </div>
     </div>
+
 </body>
 
 </html>

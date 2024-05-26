@@ -24,6 +24,7 @@
     <meta property="og:iamge" content="https://github.com/vvinyl/OSI/blob/main/pierwotneGrafiki/ethernum.png">
     <meta property="og:url" content="https://vvinyl.github.io/OSI/index.html">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
     <title>Kryptowaluty</title>
 </head>
@@ -152,53 +153,73 @@
             <a href="laboratoria.html"></a>
         </div>
         <div class="mainContent">
-            <h1>Laboratorium 8 - Wykres 1</h1>
-            <canvas width="400" height="400" id="zadanie">
-
-            </canvas>
+            <h1>Laboratorium 8 - Wykres 3</h1>
+            <div id="chart1c"></div>
             <script>
-                function generujDaneWykresu() {
-            const dane = [];
-            for (let x = -5; x <= 5; x += 0.1) {
-              dane.push({x: x, y: obliczFunkcje(x)});
-            }
-            return dane;
+           function f(x, y) {
+          return (Math.pow(x, 2) + Math.pow(y, 2)) / 2000 - Math.cos(2 * x / Math.sqrt(1)) * Math.cos(2 * y / Math.sqrt(2)) + 1;
+        }
+
+        function generujDaneWykresu(data) {
+          return data.map(punkt => ({
+            x: punkt.x,
+            y: punkt.y,
+            z: f(punkt.x, punkt.y)
+          }));
+        }
+
+        const data = [
+        { "x": -10, "y": -10 },
+        { "x": -9, "y": -9 },
+        { "x": -8, "y": -8 },
+        { "x": -7, "y": -7 },
+        { "x": -6, "y": -6 },
+        { "x": -5, "y": -5 },
+        { "x": -4, "y": -4 },
+        { "x": -3, "y": -3 },
+        { "x": -2, "y": -2 },
+        { "x": -1, "y": -1 },
+        { "x": 0, "y": 0 },
+        { "x": 1, "y": 1 },
+        { "x": 2, "y": 2 },
+        { "x": 3, "y": 3 },
+        { "x": 4, "y": 4 },
+        { "x": 5, "y": 5 },
+        { "x": 6, "y": 6 },
+        { "x": 7, "y": 7 },
+        { "x": 8, "y": 8 },
+        { "x": 9, "y": 9 },
+        { "x": 10, "y": 10 },
+        { "x": -10, "y": 10 },
+        { "x": -9, "y": 8 },
+        { "x": -8, "y": 6 },
+        { "x": -7, "y": 4 },
+        { "x": -6, "y": 2 },
+        { "x": -5, "y": 0 },
+        { "x": -4, "y": -2 },
+        { "x": -3, "y": -4 },
+        { "x": -2, "y": -6 }
+      ];
+      
+
+        const daneWykresu = generujDaneWykresu(data);
+        const trace = {
+          x: daneWykresu.map(punkt => punkt.x),
+          y: daneWykresu.map(punkt => punkt.y),
+          z: daneWykresu.map(punkt => punkt.z),
+          type: 'mesh3d'
+        };
+      
+        const layout = {
+          title: 'Wykres 3D funkcji f(x, y)',
+          scene: {
+            xaxis: { title: 'x' },
+            yaxis: { title: 'y' },
+            zaxis: { title: 'f(x, y)' }
           }
-          
-          function obliczFunkcje(x) {
-            return Math.pow(x, 2) - 10 * Math.cos(2 * Math.PI * x) + 10;
-          }
-          
-          
-          document.addEventListener('DOMContentLoaded', function() {
-            const ctx = document.getElementById('zadanie').getContext('2d');
-            const chart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                  datasets: [{
-                    label: 'f(x)',
-                    data: generujDaneWykresu(),
-                    fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.1
-                  }]
-                },
-                options: {
-                  responsive: false, 
-                  maintainAspectRatio: true, 
-                  scales: {
-                    x: {
-                      type: 'linear',
-                      position: 'bottom'
-                    },
-                    y: {
-                      beginAtZero: true 
-                    }
-                  }
-                }
-              });
-              
-          });
+        };
+      
+        Plotly.newPlot('chart1c', [trace], layout);
             </script>
         </div>
 

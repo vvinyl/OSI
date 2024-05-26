@@ -1,14 +1,17 @@
 body{
     background-color: #272727;
+    width: 90vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
     font-family: 'Courier New', Courier, monospace;
     color: white;
     font-size: 16px;
     margin-top: 30px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     padding: 0 auto;
 }
 .banner{
-    width: 100vw;
+    width: 90vw;
     display: flex;
     background-color: #FFCC17;
     color: black;
@@ -26,7 +29,7 @@ body{
     border-bottom: 1px solid black;
 }
 .mainContent{
-    width: 85vw;
+    width: 75vw;
 }
 .leftMenu{
     width: 15vw;
@@ -44,7 +47,7 @@ body{
     color: black;
 }
 .kryptoLogo{
-    width: 100%;
+    width: 90vw;
     display: flex;
 }
 .lkWidth{
@@ -68,14 +71,14 @@ body{
     padding-bottom: 10px;
 }
 .uklad{
-    width: 100vw;
+    width: 90vw;
 }
 .logoKrypto{
-    width: 100vw;
+    width: 90vw;
 }
 .footer{
     clear: both;
-    width: 100%;
+    width: 90vw;
     text-align: center;
     color: black;
     padding-top: 20px;
@@ -101,7 +104,7 @@ a{
 }
 .displayImg{
     min-height: 350px;
-    min-width: 350px;
+    width: 75vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -114,12 +117,12 @@ a{
   transform: scale(1.1);
 }
 .displayImg {
-  min-width: 85vw;
+  width: 75vw;
   min-height: 350px;
   max-height: 300px;
 }
 .lab{
-    margin: 10px;
+    /* margin: 10px; */
     color: white;
     border: 1px solid white;
     border-radius: 10px;
@@ -129,7 +132,7 @@ a{
     text-decoration: none;
 }
 .lab:hover{
-    margin: 10px;
+    /* margin: 10px; */
     color: black;
     background-color: white;
     border: 1px solid black;

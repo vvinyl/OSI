@@ -97,6 +97,8 @@
           }],
         }
         
+        
+
         </script>
     <div class="uklad">
         <div class="logoKrypto">
@@ -181,100 +183,81 @@
                 <a href="laboratoria.html"></a>
             </div>
             <div class="mainContent">
-                <h1>Laboratorium 6 - Zegar</h1>
-                <canvas id="clock" width="400" height="400"></canvas>
-                <script>
-             window.onload = function () {
-            var canvas = document.getElementById('clock');
-            var ctx = canvas.getContext('2d');
-            var radius = canvas.height / 2;
-            ctx.translate(radius, radius);
-            radius = radius * 0.90;
-            setInterval(drawClock, 1000);
+                <h1>Laboratorium 5 - Zadanie 7</h1>
+                <canvas width="400" height="400" id="zadanie">
 
-            function drawClock() {
-                drawFace(ctx, radius);
-                drawNumbers(ctx, radius);
-                drawTime(ctx, radius);
-            }
+                </canvas>
 
-            function drawFace(ctx, radius) {
-                var grad;
-                ctx.beginPath();
-                ctx.arc(0, 0, radius, 0, 2 * Math.PI);
-                ctx.fillStyle = 'white';
-                ctx.fill();
-                grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
-                grad.addColorStop(0, '#333');
-                grad.addColorStop(0.5, 'white');
-                grad.addColorStop(1, '#333');
-                ctx.strokeStyle = grad;
-                ctx.lineWidth = radius * 0.1;
-                ctx.stroke();
-                ctx.beginPath();
-                ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
-                ctx.fillStyle = '#333';
-                ctx.fill();
-            }
-
-            function drawNumbers(ctx, radius) {
-                var ang;
-                var num;
-                ctx.font = radius * 0.15 + "px arial";
-                ctx.textBaseline = "middle";
-                ctx.textAlign = "center";
-                for (num = 1; num < 13; num++) {
-                    ang = num * Math.PI / 6;
-                    ctx.rotate(ang);
-                    ctx.translate(0, -radius * 0.85);
-                    ctx.rotate(-ang);
-                    ctx.fillText(num.toString(), 0, 0);
-                    ctx.rotate(ang);
-                    ctx.translate(0, radius * 0.85);
-                    ctx.rotate(-ang);
-                }
-            }
-
-            function drawTime(ctx, radius) {
-                var now = new Date();
-                var hour = now.getHours();
-                var minute = now.getMinutes();
-                var second = now.getSeconds();
-                //hour
-                hour = hour % 12;
-                hour = (hour * Math.PI / 6) +
-                    (minute * Math.PI / (6 * 60)) +
-                    (second * Math.PI / (360 * 60));
-                drawHand(ctx, hour, radius * 0.5, radius * 0.07);
-                //minute
-                minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60));
-                drawHand(ctx, minute, radius * 0.8, radius * 0.07);
-                // second
-                second = (second * Math.PI / 30);
-                drawHand(ctx, second, radius * 0.9, radius * 0.02);
-            }
-
-            function drawHand(ctx, pos, length, width) {
-                ctx.beginPath();
-                ctx.lineWidth = width;
-                ctx.lineCap = "round";
-                ctx.moveTo(0, 0);
-                ctx.rotate(pos);
-                ctx.lineTo(0, -length);
-                ctx.stroke();
-                ctx.rotate(-pos);
-            }
-        }
-                </script>
-                
             </div>
+            <script>
+                // Dane dla wykresu
+                var dane_wykresu = {
+                    serie: [
+                        [10, 30, 45, 24, 79],
+                        [24, 15, 33, 34, 50]
+                    ],
+                    etykiety: ["label 1", "label 2", "label 3", "label 4", "label 5"],
+                    tytul: "Animowany wykres słupkowy",
+                    type: "wykres_slupkowy"
+                };
 
+                // Ustawienia wykresu
+                var canvas = document.getElementById('zadanie');
+                var ctx = canvas.getContext('2d');
+                var barWidth = 40;
+                var barSpacing = 20;
+                var animationDuration = 2000; // Czas trwania animacji (w milisekundach)
+                var framesPerSecond = 60;
+                var frameDuration = 1000 / framesPerSecond;
+                var totalFrames = Math.ceil(animationDuration / frameDuration);
+                var currentFrame = 0;
+
+                // Funkcja animacji
+                function animateBarChart() {
+                    // Wyciągnij maksymalną wartość z danych
+                    var maxValue = Math.max(...dane_wykresu.serie.flat());
+
+                    // Wyciągnij liczbę serii danych
+                    var seriesCount = dane_wykresu.serie.length;
+
+                    // Oblicz szerokość obszaru na wykresie, w którym będą rysowane słupki
+                    var chartWidth = canvas.width - (barWidth * dane_wykresu.serie[0].length + barSpacing * (dane_wykresu.serie[0].length - 1));
+
+                    // Oblicz postęp animacji
+                    var animationProgress = currentFrame / totalFrames;
+
+                    // Rysuj słupki dla każdej serii danych
+                    for (var i = 0; i < seriesCount; i++) {
+                        var serie = dane_wykresu.serie[i];
+                        for (var j = 0; j < serie.length; j++) {
+                            var barHeight = (serie[j] / maxValue) * canvas.height * animationProgress;
+                            var x = (barWidth + barSpacing) * j + (canvas.width - chartWidth) / 2;
+                            var y = canvas.height - barHeight;
+                            ctx.fillStyle = 'blue';
+                            ctx.fillRect(x, y, barWidth, barHeight);
+                        }
+                    }
+
+                    // Zwiększ bieżącą klatkę
+                    currentFrame++;
+
+                    // Jeśli animacja nie została zakończona, kontynuuj animację
+                    if (currentFrame < totalFrames) {
+                        requestAnimationFrame(animateBarChart);
+                    }
+                }
+
+                // Rozpocznij animację
+                animateBarChart();
+
+            </script>
         </div>
         <div class="footer">
             <p>Designed by: vviny_l</p>
             <p>Czwa 2024 &copy;</p>
         </div>
     </div>
+
 </body>
 
 </html>
