@@ -87,12 +87,10 @@
                 const randomY = Math.random() * (galleryHeight - photo.clientHeight) - (galleryHeight / 2 - photo.clientHeight / 2);
                 const randomRotate = Math.random() * 360;
 
-                // Ustawienie zmiennych CSS dla losowych wartości
                 photo.style.setProperty('--random-x', `${randomX}px`);
                 photo.style.setProperty('--random-y', `${randomY}px`);
                 photo.style.setProperty('--random-rotate', `${randomRotate}deg`);
 
-                // Opcjonalnie: Opóźnienie animacji dla lepszego efektu
                 const delay = Math.random() * 0.5;
                 photo.style.animationDelay = `${delay}s`;
             });
