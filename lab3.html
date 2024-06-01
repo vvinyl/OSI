@@ -1,163 +1,102 @@
 <!DOCTYPE html>
-<html lang="pl-PL" prefix="og: https://ogp.me/ns#">
+<html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-L3F42CQC9P"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-L3F42CQC9P');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="description" content="Strona główna poświęcona tematyce kryptowalut">
-    <meta name="keywords" content="Krypto, BTC, ETH, DogeCoin, Bitcoin, Ethereum, Solana, Inwestycje, kryptowaluty,revolut kryptowaluty,jak inwestować w kryptowaluty,co to są kryptowaluty,pit 38 kryptowaluty,gdzie kupić kryptowaluty,kryptowaluty kurs,czy kryptowaluty są legalne,kryptowaluty jak zacząć,jak kupić kryptowaluty,inwestycja w kryptowaluty,kryptowaluty ai,kryptowaluty aktualności,kryptowaluty aplikacja,kryptowaluty a podatki,kryptowaluty a waluty fiat quiz,kryptowaluty a pit,kryptowaluty analiza,kryptowaluty a waluty fiat,kryptowaluty a urząd skarbowy,kryptowaluty al,ai kryptowaluty,aplikacja kryptowaluty,aplikacje kryptowaluty,alior bank kryptowaluty,analiza techniczna kryptowaluty,adres kryptowaluty,anonimowe kryptowaluty,aml kryptowaluty,aaron kryptowaluty,arbitraz kryptowaluty,kryptowaluty bitcoin,kryptowaluty binance,kryptowaluty bez 18 lat,kryptowaluty bez weryfikacji,kryptowaluty blog,kryptowaluty blockchain,kryptowaluty bez działalności,kryptowaluty bez prowizji,kryptowaluty bitcoin cena,kryptowaluty blik,bot kryptowaluty,blockchain kryptowaluty,bukmacher kryptowaluty,bossa kryptowaluty,business insider kryptowaluty,binance nowe kryptowaluty,bezpieczne kryptowaluty,biuro rachunkowe kryptowaluty,banki w polsce kryptowaluty,binance kryptowaluty,kryptowaluty co to,kryptowaluty czy warto,kryptowaluty co to jest,kryptowaluty cena,kryptowaluty czy warto forum,kryptowaluty ceny,kryptowaluty co to znaczy,kryptowaluty co kupic,kryptowaluty czy to legalne,kryptowaluty czy warto inwestować,czy warto inwestować w kryptowaluty,co to kryptowaluty,co to jest stakowanie kryptowaluty,czym są kryptowaluty,czy kryptowaluty są opodatkowane,czy kryptowaluty to hazard,czy kryptowaluty upadną,chińskie kryptowaluty,kryptowaluty dla początkujących,kryptowaluty dla zabieganych,kryptowaluty dla początkujących - youtube,kryptowaluty definicja,kryptowaluty discord,kryptowaluty dzwignia,kryptowaluty defi,kryptowaluty dzisiaj,kryptowaluty dla zabieganych pdf,kryptowaluty darmowe,dlaczego kryptowaluty rosną,dlaczego kryptowaluty spadają,darmowe kryptowaluty,decyzja fed a kryptowaluty,darowizna kryptowaluty,discord kryptowaluty,do kiedy pit za kryptowaluty,decentralizacja kryptowaluty,doradca podatkowy kryptowaluty,dex kryptowaluty,kryptowaluty ethereum,kryptowaluty elona muska,kryptowaluty elon musk,kryptowaluty eth,kryptowaluty ethereum kurs,kryptowaluty etf,kryptowaluty ebook,kryptowaluty edukacja,kryptowaluty empik,etoro kryptowaluty,etf kryptowaluty">
-    <meta name="robots" content="noindex">
-    <meta name="robots" content="noarchive">
-    <link rel="stylesheet" href="style.css">
-    
-    <meta property="og:title" content="Kryptowaluty - informacje wstępne">
-    <meta property="og:type" content="website">
-    <meta property="og:iamge" content="https://github.com/vvinyl/OSI/blob/main/pierwotneGrafiki/ethernum.png">
-    <meta property="og:url" content="https://vvinyl.github.io/OSI/index.html">
+    <title>Lab3</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-    <title>Kryptowaluty</title>
+        nav {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.8); /* Opcjonalne tło dla lepszej widoczności */
+            padding: 10px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .galeria {
+            position: relative;
+            width: 80%;
+            height: 80%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .foto {
+            width: 100px;
+            height: 100px;
+            transition: transform 1s, opacity 1s;
+            animation: randomize 1s ease-in-out forwards;
+        }
+
+        @keyframes randomize {
+            0% {
+                transform: translate(var(--random-x), var(--random-y)) rotate(var(--random-rotate));
+                opacity: 0;
+            }
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 <body>
-    <script type="application/ld+json">
+    <header>Dla lepszej widoczności nie zastosowano stylów</header>
+    <nav>
+                <a href="./index.html" target="_blank">Strona głowna</a>
+    </nav>
+    <main class="">
+        <div class="content">
+            <div class="galeria">
+                <img class="foto" src="./galeria/1.png" width="100px" height="100px" alt="Photo 1">
+                <img class="foto" src="./galeria/2.png" width="100px" height="100px" alt="Photo 2">
+                <img class="foto" src="./galeria/3.png" width="100px" height="100px" alt="Photo 3">
+                <img class="foto" src="./galeria/4.png" width="100px" height="100px" alt="Photo 4">
+                <img class="foto" src="./galeria/5.png" width="100px" height="100px" alt="Photo 5">
+                <img class="foto" src="./galeria/6.png" width="100px" height="100px" alt="Photo 6">
+                <img class="foto" src="./galeria/7.png" width="100px" height="100px" alt="Photo 7">
+                <img class="foto" src="./galeria/8.png" width="100px" height="100px" alt="Photo 8">
+                <img class="foto" src="./galeria/9.png" width="100px" height="100px" alt="Photo 9">
+                <img class="foto" src="./galeria/10.png" width="100px" height="100px" alt="Photo 10">
+              </div> 
+        </div>      
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const photos = document.querySelectorAll('.foto');
+            const gallery = document.querySelector('.galeria');
+            const galleryWidth = gallery.clientWidth;
+            const galleryHeight = gallery.clientHeight;
 
-        {
-        
-          "@context": "https://schema.org",
-        
-          "@type": "LocalBusiness",
-        
-          "name": "RTV i AGD - Bielsko-Biała - Sklep LUKE",
-        
-          "image": "",
-        
-          "url": "https://luke.pl/",
-        
-          "telephone": "12 34 56 78 90",
-        
-          "priceRange": "$$",
-        
-          "address": {
-        
-            "@type": "PostalAddress",
-        
-            "streetAddress": "Lorem Ipsum",
-        
-            "addressLocality": "Lorem Ipsum",
-        
-            "postalCode": "43-300",
-        
-            "addressCountry": "PL"
-        
-          },
-        
-          "openingHoursSpecification": [{
-        
-            "@type": "OpeningHoursSpecification",
-        
-            "dayOfWeek": [
-        
-              "Monday",
-        
-              "Tuesday",
-        
-              "Wednesday",
-        
-              "Thursday",
-        
-              "Friday"
-        
-            ],
-        
-            "opens": "09:00",
-        
-            "closes": "18:00"
-        
-          },{
-        
-            "@type": "OpeningHoursSpecification",
-        
-            "dayOfWeek": "Saturday",
-        
-            "opens": "09:00",
-        
-            "closes": "15:00"
-        
-          }],
-        }
-        
-        </script>
-<div class="uklad">
-    <div class="logoKrypto">
-        <div class="lkWidth">
-            <img src="pierwotneGrafiki/bitcoin.png" alt="Bitcoin" class="skalowanie">
-        </div>
-        <div class="lkWidth">
-            <img src="pierwotneGrafiki/ethernum.png" alt="Ethereum" class="skalowanie">
-        </div>
-        <div class="lkWidth">
-            <img src="pierwotneGrafiki/dogecoin.png" alt="Dodge Coin"class="skalowanie">
-        </div>
-        <div class="lkWidth">
-            <img src="pierwotneGrafiki/solana.png" alt="solana" class="skalowanie">
-        </div>
-    </div>
-    <div class="banner">
-        <div class="bn">
-            <a href="index.html"><p>Główna</p></a>
-        </div>
-        <div class="bn">
-            <a href="kryptowaluty.html"><p>Kryptowaluty</p></a>
-        </div>
-        <div class="bn">
-            <a href="aktualnosci.html"><p>Aktualności</p></a>
-        </div>
-        <div class="bn">
-            <a href="informacje.html"><p>Informacje</p></a>
+            photos.forEach(photo => {
+                const randomX = Math.random() * (galleryWidth - photo.clientWidth) - (galleryWidth / 2 - photo.clientWidth / 2);
+                const randomY = Math.random() * (galleryHeight - photo.clientHeight) - (galleryHeight / 2 - photo.clientHeight / 2);
+                const randomRotate = Math.random() * 360;
 
-        </div>
-    </div>
-    <div class="content">
-        <div class="leftMenu">
-            <p class="lmPadding">Czytaj więcej:</p>
-            <ul>
-            <a href="https://academy.binance.com/pl/start-here?utm_campaign=googleadsxacademy&utm_source=googleadwords_int&utm_medium=cpc&ref=HDYAHEES&gad_source=1&gclid=CjwKCAiAloavBhBOEiwAbtAJO8Td4syT0qx_S41AnYCv8Kt504vvMczM7TUB7vG5JnuQuuqHy2ITGRoCkMYQAvD_BwE" target="_blank"><li>Jak inwestować?</li></a>
-            <a href="https://eazybot.pl/gdzie-najlepiej-inwestowac-w-kryptowaluty/" target="_blank"><li>Gdzie inwestować?</li></a>
-            </ul>
-            <p class="lmPadding">Krypto wiki:</p>
-            <ul>
-                <a href="https://pl.wikipedia.org/wiki/Bitcoin" target="_blank"><li>Bitcoin</li></a>
-                <a href="https://pl.wikipedia.org/wiki/Ethereum" target="_blank"><li>Ethereum</li></a>
-                <a href="https://pl.wikipedia.org/wiki/Dogecoin" target="_blank"><li>DogeCoin</li></a>
-                <a href="https://en.wikipedia.org/wiki/Solana_(blockchain_platform)" target="_blank"><li>Solana</li></a>
-                <a href="https://pl.wikipedia.org/wiki/Cardano_blockchain" target="_blank"><li>Cordano</li></a>
-                <a href="https://en.wikipedia.org/wiki/Avalanche_(blockchain_platform)" target="_blank"><li>Avalanche</li></a>
-            </ul>
-            <p class="lmPadding">Lab 3</p>
-            <ul>
-                <a href="keyframes.html"><li>Keyframes</li></a>
-                <a href="googleWebDesigner.html"><li>Google Web Designer</li></a>
-            </ul>
-            <a href="laboratoria.html"></a>
-        </div>
-        <div class="mainContent">
-            <h1>Laboratorium 3 - animacje CSS, animacje 3D</h1>
-            
-        </div>
+                // Ustawienie zmiennych CSS dla losowych wartości
+                photo.style.setProperty('--random-x', `${randomX}px`);
+                photo.style.setProperty('--random-y', `${randomY}px`);
+                photo.style.setProperty('--random-rotate', `${randomRotate}deg`);
 
-    </div>
-    <div class="footer">
-        <p>Designed by: vviny_l</p>
-        <p>Czwa 2024 &copy;</p>
-    </div>
-</div>    
+                // Opcjonalnie: Opóźnienie animacji dla lepszego efektu
+                const delay = Math.random() * 0.5;
+                photo.style.animationDelay = `${delay}s`;
+            });
+        });
+    </script>
 </body>
 </html>
